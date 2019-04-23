@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+set -x
+
+for f in $(ls /usr/share/nginx/html/*.js); do
+   sed -i -e "s $API_URL $DOCKUP_API_URL g" $f;
+done
+
+nginx -g "daemon off;"
